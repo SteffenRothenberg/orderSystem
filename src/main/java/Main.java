@@ -1,5 +1,6 @@
 import java.awt.color.ProfileDataException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -29,6 +30,28 @@ public class Main {
             System.out.println("Product found : " + product.getProductName());
         } else {
             System.out.println("Product not found. ");
+        }
+
+
+
+
+        ArrayList<Product> pl1 = new ArrayList<>(Arrays.asList(p1,p2,p3));
+        Order o1 = new Order("OrderNo.001", pl1);
+
+        ArrayList<Product> pl2 = new ArrayList<>(Arrays.asList(p1,p2,p2));
+        Order o2 = new Order("OrderNo.002", pl2);
+
+        ArrayList <Order> myOrders = new ArrayList<>();
+        myOrders.add(o1);
+        myOrders.add(o2);
+
+        OrderRepo myOrderRepo = new OrderRepo(myOrders);
+
+        Order order = myOrderRepo.getOrderID("OrderNo.001");
+        if (product != null){
+            System.out.println("Order found : " + order.getOrderID());
+        } else {
+            System.out.println("Order not found. ");
         }
 
     }
